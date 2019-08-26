@@ -1,0 +1,201 @@
+{
+  "version": "0.36.0",
+  "artifacts": {
+    "MyStaticSite": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "MyStaticSite.template.json"
+      },
+      "metadata": {
+        "/MyStaticSite/StaticSite/SiteBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteSiteBucket1A888BC8",
+            "trace": [
+              "new Bucket (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-s3\\lib\\bucket.js:342:26)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:25:28)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/SiteBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteSiteBucketPolicyD7934718",
+            "trace": [
+              "new BucketPolicy (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-s3\\lib\\bucket-policy.js:21:9)",
+              "Bucket.addToResourcePolicy (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-s3\\lib\\bucket.js:89:27)",
+              "Function.addToPrincipalOrResource (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-iam\\lib\\grant.js:38:26)",
+              "Bucket.grantPublicAccess (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-s3\\lib\\bucket.js:217:26)",
+              "new Bucket (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-s3\\lib\\bucket.js:378:18)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:25:28)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/Bucket": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteBucket34E5D9AF",
+            "trace": [
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:31:9)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/ArnParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteArnParameterED3722EA",
+            "trace": [
+              "new Certificate (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-certificatemanager\\lib\\certificate.js:39:22)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:33:32)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/SiteDistribution/CFDistribution": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteSiteDistributionCFDistribution500D676B",
+            "trace": [
+              "new CloudFrontWebDistribution (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-cloudfront\\lib\\web_distribution.js:289:30)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:37:30)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/DistributionId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteDistributionId8C64EF2A",
+            "trace": [
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:53:9)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/MyHostedZone/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteMyHostedZone2FF4976C",
+            "trace": [
+              "new HostedZone (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-route53\\lib\\hosted-zone.js:16:26)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:59:22)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ],
+        "/MyStaticSite/StaticSite/SiteAliasRecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticSiteSiteAliasRecord5B525E22",
+            "trace": [
+              "new RecordSet (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-route53\\lib\\record-set.js:59:27)",
+              "new ARecord (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\node_modules\\@aws-cdk\\aws-route53\\lib\\record-set.js:85:9)",
+              "new StaticSite (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\static-site.js:62:9)",
+              "new MyStaticSiteStack (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:20:9)",
+              "Object.<anonymous> (C:\\Users\\jrw\\Google Drive\\MIT\\Courses\\awsDemos\\awsS3BucketWebSite\\index.js:27:1)",
+              "Module._compile (internal/modules/cjs/loader.js:689:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)",
+              "Module.load (internal/modules/cjs/loader.js:599:32)",
+              "tryModuleLoad (internal/modules/cjs/loader.js:538:12)",
+              "Function.Module._load (internal/modules/cjs/loader.js:530:3)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:742:12)",
+              "startup (internal/bootstrap/node.js:283:19)",
+              "bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "runtime": {
+    "libraries": {
+      "@aws-cdk/core": "1.2.0",
+      "@aws-cdk/cx-api": "1.2.0",
+      "@aws-cdk/aws-cloudfront": "1.2.0",
+      "@aws-cdk/aws-s3": "1.2.0",
+      "@aws-cdk/aws-events": "1.2.0",
+      "@aws-cdk/aws-iam": "1.2.0",
+      "@aws-cdk/region-info": "1.2.0",
+      "@aws-cdk/aws-kms": "1.2.0",
+      "@aws-cdk/aws-route53": "1.2.0",
+      "@aws-cdk/aws-certificatemanager": "1.2.0",
+      "@aws-cdk/aws-cloudformation": "1.2.0",
+      "@aws-cdk/aws-lambda": "1.2.0",
+      "@aws-cdk/aws-cloudwatch": "1.2.0",
+      "@aws-cdk/aws-ec2": "1.2.0",
+      "@aws-cdk/aws-ssm": "1.2.0",
+      "@aws-cdk/aws-sqs": "1.2.0",
+      "@aws-cdk/aws-s3-assets": "1.2.0",
+      "@aws-cdk/assets": "1.2.0",
+      "@aws-cdk/aws-route53-targets": "1.2.0",
+      "jsii-runtime": "node.js/v10.15.0"
+    }
+  }
+}

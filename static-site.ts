@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import cloudfront = require('@aws-cdk/aws-cloudfront');
-import route53 = require('@aws-cdk/aws-route53');
+import route53 = require('@aws-cdk/aws-route53');	
 import s3 = require('@aws-cdk/aws-s3');
-import ssm = require('@aws-cdk/aws-ssm');
-import cdk = require('@aws-cdk/cdk');
+import acm = require('@aws-cdk/aws-certificatemanager');
+import cdk = require('@aws-cdk/core');
+import targets = require('@aws-cdk/aws-route53-targets/lib');	
+import { Construct } from '@aws-cdk/core';
 
 export interface StaticSiteProps {
     domainName: string;
@@ -19,8 +21,8 @@ export interface StaticSiteProps {
  * The ACM certificate is expected to be created and validated outside of the CDK,
  * with the certificate ARN stored in an SSM Parameter.
  */
-export class StaticSite extends cdk.Construct {
-    constructor(parent: cdk.Construct, name: string, props: StaticSiteProps) {
+export class StaticSite extends Construct {
+    constructor(parent: Construct, name: string, props: StaticSiteProps) {
         super(parent, name);
 
         const siteDomain = props.siteSubDomain + '.' + props.domainName;
@@ -35,9 +37,9 @@ export class StaticSite extends cdk.Construct {
         new cdk.CfnOutput(this, 'Bucket', { value: siteBucket.bucketName });
 
         // Pre-existing ACM certificate, with the ARN stored in an SSM Parameter
-        const certificateArn = new ssm.ParameterStoreString(this, 'ArnParameter', {
-            parameterName: 'CertificateArn-' + siteDomain
-        }).stringValue;
+        const certificateArn = new acm.Certificate(this, 'ArnParameter', {
+            domainName: props.domainName
+        }).certificateArn;
 
         // CloudFront distribution that provides HTTPS
         const distribution = new cloudfront.CloudFrontWebDistribution(this, 'SiteDistribution', {
@@ -45,7 +47,7 @@ export class StaticSite extends cdk.Construct {
                 acmCertRef: certificateArn,
                 names: [ siteDomain ],
                 sslMethod: cloudfront.SSLMethod.SNI,
-                securityPolicy: cloudfront.SecurityPolicyProtocol.TLSv1_1_2016
+                securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_1_2016,
             },
             originConfigs: [
                 {
@@ -58,11 +60,18 @@ export class StaticSite extends cdk.Construct {
         });
         new cdk.CfnOutput(this, 'DistributionId', { value: distribution.distributionId });
 
+        /**
+         * NOTE: the code below is not transpiling properly to JavaScript
+         * Pending review by AWS team
+         */
+
         // Route53 alias record for the CloudFront distribution
-        const zone = new route53.HostedZoneProvider(this, { domainName: props.domainName }).findAndImport(this, 'Zone');
-        new route53.AliasRecord(this, 'SiteAliasRecord', {
+        const zone = new route53.HostedZone(this, 'MyHostedZone', {
+            zoneName: props.domainName
+        });
+        new route53.ARecord(this, 'SiteAliasRecord', {
             recordName: siteDomain,
-            target: distribution,
+            target: route53.AddressRecordTarget.fromAlias(new targets.CloudFrontTarget(distribution)),
             zone
         });
     }

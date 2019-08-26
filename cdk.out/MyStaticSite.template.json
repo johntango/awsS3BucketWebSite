@@ -1,0 +1,168 @@
+{
+  "Resources": {
+    "StaticSiteSiteBucket1A888BC8": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "www.mystaticsite.com",
+        "WebsiteConfiguration": {
+          "ErrorDocument": "error.html",
+          "IndexDocument": "index.html"
+        }
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/SiteBucket/Resource"
+      }
+    },
+    "StaticSiteSiteBucketPolicyD7934718": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "StaticSiteSiteBucket1A888BC8"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "StaticSiteSiteBucket1A888BC8",
+                        "Arn"
+                      ]
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/SiteBucket/Policy/Resource"
+      }
+    },
+    "StaticSiteArnParameterED3722EA": {
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": "mystaticsite.com",
+        "DomainValidationOptions": [
+          {
+            "DomainName": "mystaticsite.com",
+            "ValidationDomain": "mystaticsite.com"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/ArnParameter/Resource"
+      }
+    },
+    "StaticSiteSiteDistributionCFDistribution500D676B": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "www.mystaticsite.com"
+          ],
+          "CacheBehaviors": [],
+          "DefaultCacheBehavior": {
+            "AllowedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "ForwardedValues": {
+              "Cookies": {
+                "Forward": "none"
+              },
+              "QueryString": false
+            },
+            "TargetOriginId": "origin1",
+            "ViewerProtocolPolicy": "redirect-to-https"
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "StaticSiteSiteBucket1A888BC8",
+                  "RegionalDomainName"
+                ]
+              },
+              "Id": "origin1",
+              "S3OriginConfig": {}
+            }
+          ],
+          "PriceClass": "PriceClass_100",
+          "ViewerCertificate": {
+            "AcmCertificateArn": {
+              "Ref": "StaticSiteArnParameterED3722EA"
+            },
+            "MinimumProtocolVersion": "TLSv1.1_2016",
+            "SslSupportMethod": "sni-only"
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/SiteDistribution/CFDistribution"
+      }
+    },
+    "StaticSiteMyHostedZone2FF4976C": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "Name": "mystaticsite.com."
+      },
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/MyHostedZone/Resource"
+      }
+    },
+    "StaticSiteSiteAliasRecord5B525E22": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "Name": "www.mystaticsite.com.",
+        "Type": "A",
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "StaticSiteSiteDistributionCFDistribution500D676B",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneId": {
+          "Ref": "StaticSiteMyHostedZone2FF4976C"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "MyStaticSite/StaticSite/SiteAliasRecord/Resource"
+      }
+    }
+  },
+  "Outputs": {
+    "StaticSiteBucket34E5D9AF": {
+      "Value": {
+        "Ref": "StaticSiteSiteBucket1A888BC8"
+      }
+    },
+    "StaticSiteDistributionId8C64EF2A": {
+      "Value": {
+        "Ref": "StaticSiteSiteDistributionCFDistribution500D676B"
+      }
+    }
+  }
+}
